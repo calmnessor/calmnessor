@@ -1,0 +1,38 @@
+name: 部署博客到 GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取源码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --no-frozen-lockfile
+
+      - name: 编译 VuePress 站点
+        run: pnpm docs:build
+
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: src/.vuepress/dist
