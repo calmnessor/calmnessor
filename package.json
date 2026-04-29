@@ -1,7 +1,7 @@
 {
-  "name": "cc",
-  "description": "A project of vuepress-theme-hope",
-  "version": "2.0.0",
+  "name": "kekexi-blog",
+  "description": "可可西的博客",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "scripts": {

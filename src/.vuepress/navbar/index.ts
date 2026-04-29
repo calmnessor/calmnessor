@@ -1,2 +1,3 @@
-export * from "./en.js";
-export * from "./zh.js";
+import { navbar as defineNavbar } from "vuepress-theme-hope";
+
+export const navbar = defineNavbar(["/", "/intro"]);

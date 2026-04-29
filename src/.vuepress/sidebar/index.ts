@@ -1,2 +1,5 @@
-export * from "./en.js";
-export * from "./zh.js";
+import { sidebar as defineSidebar } from "vuepress-theme-hope";
+
+export const sidebar = defineSidebar({
+  "/": ["", "intro"],
+});
